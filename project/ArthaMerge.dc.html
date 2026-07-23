@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous" />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --bg:     oklch(97% 0.008 78);
+      --ink:    oklch(15% 0.010 60);
+      --muted:  oklch(48% 0.010 60);
+      --accent: oklch(56% 0.080 68);
+      --rule:   oklch(87% 0.010 75);
+      --serif:  'Cormorant Garamond', Georgia, serif;
+      --sans:   'DM Sans', system-ui, sans-serif;
+    }
+    html { scroll-behavior: smooth; }
+    body {
+      background: var(--bg);
+      color: var(--ink);
+      font-family: var(--sans);
+      font-weight: 300;
+      font-size: 16px;
+      line-height: 1.7;
+      -webkit-font-smoothing: antialiased;
+    }
+    a { color: inherit; text-decoration: none; }
+    a:hover { color: var(--accent); }
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(24px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    .reveal {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .reveal.d1 { transition-delay: 0.1s; }
+    .reveal.d2 { transition-delay: 0.2s; }
+    .reveal.d3 { transition-delay: 0.3s; }
+    .reveal.d4 { transition-delay: 0.4s; }
+    .reveal.d5 { transition-delay: 0.5s; }
+  </style>
+</helmet>
+
+<!-- ─── NAV ─────────────────────────────────────────────── -->
+<nav style="
+  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 20px 60px;
+  background: var(--bg);
+  border-bottom: 1px solid var(--rule);
+  backdrop-filter: blur(4px);
+">
+  <img src="uploads/ArthaMerge_logo_compact.jpg" alt="ArthaMerge" style="height: 40px; width: auto; display: block;" />
+  <a href="#contact" style="
+    font-family: var(--sans); font-size: 12px; font-weight: 500;
+    letter-spacing: 0.12em; text-transform: uppercase;
+    color: var(--accent); border-bottom: 1px solid var(--accent);
+    padding-bottom: 2px;
+  ">Enquire</a>
+</nav>
+
+<!-- ─── HERO ─────────────────────────────────────────────── -->
+<section style="
+  min-height: 100vh;
+  display: flex; flex-direction: column; justify-content: center; align-items: center;
+  text-align: center;
+  padding: 120px 40px 160px;
+  position: relative;
+">
+  <p style="
+    font-family: var(--sans); font-size: 11px; font-weight: 500;
+    letter-spacing: 0.18em; text-transform: uppercase; color: var(--muted);
+    margin-bottom: 28px;
+    animation: fadeUp 0.9s ease both;
+  ">Strategic M&amp;A Advisory</p>
+
+  <h1 style="
+    font-family: var(--serif); font-size: clamp(52px, 8vw, 100px);
+    font-weight: 300; line-height: 1.05; letter-spacing: -0.01em;
+    color: var(--ink); max-width: 800px;
+    animation: fadeUp 0.9s ease 0.15s both;
+  ">Structured exits for<br /><em style="font-style: italic; color: var(--accent);">growth-stage</em> brands.</h1>
+
+  <p style="
+    font-family: var(--sans); font-size: 16px; font-weight: 300;
+    color: var(--muted); max-width: 480px; margin-top: 28px; line-height: 1.8;
+    animation: fadeUp 0.9s ease 0.3s both;
+  ">Helping transition-stage D2C companies and early-stage investors achieve structured, value-maximizing exits.</p>
+
+  <!-- stat strip -->
+  <div style="
+    position: absolute; bottom: 0; left: 0; right: 0;
+    border-top: 1px solid var(--rule);
+    display: flex; justify-content: center;
+    animation: fadeUp 0.9s ease 0.5s both;
+  ">
+    <div style="
+      display: flex; align-items: stretch;
+      max-width: 720px; width: 100%;
+    ">
+      <div style="flex: 1; padding: 24px 32px; border-right: 1px solid var(--rule); text-align: center;">
+        <div style="font-family: var(--serif); font-size: 24px; font-weight: 500; color: var(--accent);">₹10–75 Cr</div>
+        <div style="font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); margin-top: 4px;">Enterprise Value</div>
+      </div>
+      <div style="flex: 1; padding: 24px 32px; border-right: 1px solid var(--rule); text-align: center;">
+        <div style="font-family: var(--serif); font-size: 24px; font-weight: 500; color: var(--accent);">3–7 Yrs</div>
+        <div style="font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); margin-top: 4px;">Business Stage</div>
+      </div>
+      <div style="flex: 1; padding: 24px 32px; text-align: center;">
+        <div style="font-family: var(--serif); font-size: 24px; font-weight: 500; color: var(--accent);">D2C Focus</div>
+        <div style="font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); margin-top: 4px;">Sector Specialisation</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── OVERVIEW ─────────────────────────────────────────── -->
+<section style="padding: 120px 60px; max-width: 960px; margin: 0 auto;">
+  <div class="reveal" style="display: flex; gap: 80px; align-items: flex-start; flex-wrap: wrap;">
+    <div style="flex: 0 0 200px;">
+      <div style="width: 32px; height: 1px; background: var(--accent); margin-bottom: 12px;"></div>
+      <p style="font-size: 11px; letter-spacing: 0.15em; text-transform: uppercase; color: var(--muted);">About</p>
+    </div>
+    <div style="flex: 1; min-width: 280px;">
+      <p style="font-family: var(--serif); font-size: clamp(22px, 3vw, 30px); font-weight: 300; line-height: 1.55; color: var(--ink);">
+        ArthaMerge is a boutique advisory firm exclusively focused on sell-side M&amp;A, secondary liquidity, and consolidation-led exits for India's growth-stage D2C brands.
+      </p>
+      <p style="font-size: 15px; color: var(--muted); margin-top: 24px; line-height: 1.8;">
+        We operate at the intersection of capital, strategy, and execution — working selectively with founders and early investors who are ready to structure a meaningful transition. Our mandate is singular: delivering outcomes, not activity.
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- divider -->
+<div style="max-width: 960px; margin: 0 auto 0; padding: 0 60px;">
+  <div style="height: 1px; background: var(--rule);"></div>
+</div>
+
+<!-- ─── WHAT WE DO ─────────────────────────────────────────── -->
+<section style="padding: 120px 60px; max-width: 960px; margin: 0 auto;">
+  <div class="reveal" style="display: flex; gap: 80px; align-items: flex-start; flex-wrap: wrap; margin-bottom: 64px;">
+    <div style="flex: 0 0 200px;">
+      <div style="width: 32px; height: 1px; background: var(--accent); margin-bottom: 12px;"></div>
+      <p style="font-size: 11px; letter-spacing: 0.15em; text-transform: uppercase; color: var(--muted);">Services</p>
+    </div>
+    <div style="flex: 1; min-width: 280px;">
+      <h2 style="font-family: var(--serif); font-size: clamp(32px, 4vw, 48px); font-weight: 300; line-height: 1.2;">What We Do</h2>
+    </div>
+  </div>
+
+  <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1px; background: var(--rule); border: 1px solid var(--rule);">
+    <div class="reveal d1" style="background: var(--bg); padding: 48px 40px;">
+      <div style="font-family: var(--serif); font-size: 13px; font-weight: 500; color: var(--accent); letter-spacing: 0.04em; margin-bottom: 16px;">01</div>
+      <h3 style="font-family: var(--serif); font-size: 22px; font-weight: 400; line-height: 1.3; margin-bottom: 14px;">Sell-Side M&amp;A Advisory</h3>
+      <p style="font-size: 14px; color: var(--muted); line-height: 1.8;">End-to-end transaction management — from positioning through to deal closure — representing the interests of founders and shareholders seeking a strategic exit.</p>
+    </div>
+    <div class="reveal d2" style="background: var(--bg); padding: 48px 40px;">
+      <div style="font-family: var(--serif); font-size: 13px; font-weight: 500; color: var(--accent); letter-spacing: 0.04em; margin-bottom: 16px;">02</div>
+      <h3 style="font-family: var(--serif); font-size: 22px; font-weight: 400; line-height: 1.3; margin-bottom: 14px;">Secondary Liquidity Solutions</h3>
+      <p style="font-size: 14px; color: var(--muted); line-height: 1.8;">Structured liquidity events for early investors and employee shareholders — enabling partial or full exits without disrupting ongoing operations.</p>
+    </div>
+    <div class="reveal d3" style="background: var(--bg); padding: 48px 40px;">
+      <div style="font-family: var(--serif); font-size: 13px; font-weight: 500; color: var(--accent); letter-spacing: 0.04em; margin-bottom: 16px;">03</div>
+      <h3 style="font-family: var(--serif); font-size: 22px; font-weight: 400; line-height: 1.3; margin-bottom: 14px;">Consolidation &amp; Roll-Up Transactions</h3>
+      <p style="font-size: 14px; color: var(--muted); line-height: 1.8;">Facilitating mergers and roll-up strategies within fragmented D2C categories, creating scale and synergy for all stakeholders.</p>
+    </div>
+    <div class="reveal d4" style="background: var(--bg); padding: 48px 40px;">
+      <div style="font-family: var(--serif); font-size: 13px; font-weight: 500; color: var(--accent); letter-spacing: 0.04em; margin-bottom: 16px;">04</div>
+      <h3 style="font-family: var(--serif); font-size: 22px; font-weight: 400; line-height: 1.3; margin-bottom: 14px;">Exit Readiness &amp; Positioning</h3>
+      <p style="font-size: 14px; color: var(--muted); line-height: 1.8;">Pre-transaction advisory to strengthen financial, operational, and narrative positioning — ensuring the business commands the valuation it deserves.</p>
+    </div>
+  </div>
+</section>
+
+<!-- divider -->
+<div style="max-width: 960px; margin: 0 auto; padding: 0 60px;">
+  <div style="height: 1px; background: var(--rule);"></div>
+</div>
+
+<!-- ─── OUR APPROACH ─────────────────────────────────────────── -->
+<section style="padding: 120px 60px; max-width: 960px; margin: 0 auto;">
+  <div class="reveal" style="display: flex; gap: 80px; align-items: flex-start; flex-wrap: wrap; margin-bottom: 72px;">
+    <div style="flex: 0 0 200px;">
+      <div style="width: 32px; height: 1px; background: var(--accent); margin-bottom: 12px;"></div>
+      <p style="font-size: 11px; letter-spacing: 0.15em; text-transform: uppercase; color: var(--muted);">Process</p>
+    </div>
+    <div style="flex: 1; min-width: 280px;">
+      <h2 style="font-family: var(--serif); font-size: clamp(32px, 4vw, 48px); font-weight: 300; line-height: 1.2;">Our Approach</h2>
+    </div>
+  </div>
+
+  <div style="display: flex; flex-direction: column; gap: 0;">
+    <div class="reveal d1" style="display: flex; align-items: flex-start; gap: 48px; padding: 40px 0; border-top: 1px solid var(--rule);">
+      <div style="flex: 0 0 200px; font-family: var(--serif); font-size: 13px; color: var(--accent); font-weight: 500; letter-spacing: 0.04em; padding-top: 4px;">01</div>
+      <div style="flex: 1;">
+        <h3 style="font-family: var(--serif); font-size: 20px; font-weight: 400; margin-bottom: 8px;">Assessment &amp; Readiness</h3>
+        <p style="font-size: 14px; color: var(--muted); line-height: 1.8;">A candid evaluation of the business's exit-readiness — financials, structure, narrative, and timing — before any transaction process begins.</p>
+      </div>
+    </div>
+    <div class="reveal d2" style="display: flex; align-items: flex-start; gap: 48px; padding: 40px 0; border-top: 1px solid var(--rule);">
+      <div style="flex: 0 0 200px; font-family: var(--serif); font-size: 13px; color: var(--accent); font-weight: 500; letter-spacing: 0.04em; padding-top: 4px;">02</div>
+      <div style="flex: 1;">
+        <h3 style="font-family: var(--serif); font-size: 20px; font-weight: 400; margin-bottom: 8px;">Valuation &amp; Positioning</h3>
+        <p style="font-size: 14px; color: var(--muted); line-height: 1.8;">Establishing a defensible valuation range and crafting the transaction narrative that resonates with the right class of buyers or investors.</p>
+      </div>
+    </div>
+    <div class="reveal d3" style="display: flex; align-items: flex-start; gap: 48px; padding: 40px 0; border-top: 1px solid var(--rule);">
+      <div style="flex: 0 0 200px; font-family: var(--serif); font-size: 13px; color: var(--accent); font-weight: 500; letter-spacing: 0.04em; padding-top: 4px;">03</div>
+      <div style="flex: 1;">
+        <h3 style="font-family: var(--serif); font-size: 20px; font-weight: 400; margin-bottom: 8px;">Buyer Mapping</h3>
+        <p style="font-size: 14px; color: var(--muted); line-height: 1.8;">Discreet, targeted outreach to a curated universe of strategic acquirers, consolidators, and financial buyers — quality over volume, always.</p>
+      </div>
+    </div>
+    <div class="reveal d4" style="display: flex; align-items: flex-start; gap: 48px; padding: 40px 0; border-top: 1px solid var(--rule);">
+      <div style="flex: 0 0 200px; font-family: var(--serif); font-size: 13px; color: var(--accent); font-weight: 500; letter-spacing: 0.04em; padding-top: 4px;">04</div>
+      <div style="flex: 1;">
+        <h3 style="font-family: var(--serif); font-size: 20px; font-weight: 400; margin-bottom: 8px;">Transaction Structuring</h3>
+        <p style="font-size: 14px; color: var(--muted); line-height: 1.8;">Negotiating and structuring deal terms — consideration, earnouts, warranties, and governance — to protect client value at every turn.</p>
+      </div>
+    </div>
+    <div class="reveal d5" style="display: flex; align-items: flex-start; gap: 48px; padding: 40px 0; border-top: 1px solid var(--rule); border-bottom: 1px solid var(--rule);">
+      <div style="flex: 0 0 200px; font-family: var(--serif); font-size: 13px; color: var(--accent); font-weight: 500; letter-spacing: 0.04em; padding-top: 4px;">05</div>
+      <div style="flex: 1;">
+        <h3 style="font-family: var(--serif); font-size: 20px; font-weight: 400; margin-bottom: 8px;">Execution &amp; Closure</h3>
+        <p style="font-size: 14px; color: var(--muted); line-height: 1.8;">Coordinating due diligence, legal, and regulatory workstreams to bring the transaction across the line — with discipline and without distraction.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- divider -->
+<div style="max-width: 960px; margin: 0 auto; padding: 0 60px;">
+  <div style="height: 1px; background: var(--rule);"></div>
+</div>
+
+<!-- ─── DEAL PROFILE ─────────────────────────────────────────── -->
+<section style="padding: 120px 60px; max-width: 960px; margin: 0 auto;">
+  <div class="reveal" style="display: flex; gap: 80px; align-items: flex-start; flex-wrap: wrap; margin-bottom: 64px;">
+    <div style="flex: 0 0 200px;">
+      <div style="width: 32px; height: 1px; background: var(--accent); margin-bottom: 12px;"></div>
+      <p style="font-size: 11px; letter-spacing: 0.15em; text-transform: uppercase; color: var(--muted);">Mandate Fit</p>
+    </div>
+    <div style="flex: 1; min-width: 280px;">
+      <h2 style="font-family: var(--serif); font-size: clamp(32px, 4vw, 48px); font-weight: 300; line-height: 1.2;">Target Deal Profile</h2>
+    </div>
+  </div>
+
+  <div style="display: flex; gap: 80px; flex-wrap: wrap; align-items: flex-start;">
+    <!-- metrics -->
+    <div class="reveal" style="flex: 1; min-width: 260px;">
+      <p style="font-size: 11px; letter-spacing: 0.15em; text-transform: uppercase; color: var(--muted); margin-bottom: 28px;">Key Metrics</p>
+      <div style="display: flex; flex-direction: column; gap: 0;">
+        <div style="display: flex; justify-content: space-between; align-items: baseline; padding: 16px 0; border-top: 1px solid var(--rule);">
+          <span style="font-size: 13px; color: var(--muted);">Enterprise Value</span>
+          <span style="font-family: var(--serif); font-size: 20px; font-weight: 400;">₹10–75 Cr</span>
+        </div>
+        <div style="display: flex; justify-content: space-between; align-items: baseline; padding: 16px 0; border-top: 1px solid var(--rule);">
+          <span style="font-size: 13px; color: var(--muted);">Revenue Range</span>
+          <span style="font-family: var(--serif); font-size: 20px; font-weight: 400;">₹8–50 Cr</span>
+        </div>
+        <div style="display: flex; justify-content: space-between; align-items: baseline; padding: 16px 0; border-top: 1px solid var(--rule);">
+          <span style="font-size: 13px; color: var(--muted);">Business Stage</span>
+          <span style="font-family: var(--serif); font-size: 20px; font-weight: 400;">3–7 Years</span>
+        </div>
+        <div style="display: flex; justify-content: space-between; align-items: baseline; padding: 16px 0; border-top: 1px solid var(--rule); border-bottom: 1px solid var(--rule);">
+          <span style="font-size: 13px; color: var(--muted);">Ownership Profile</span>
+          <span style="font-family: var(--serif); font-size: 20px; font-weight: 400;">Founder-led / VC-backed</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- sectors -->
+    <div class="reveal d2" style="flex: 1; min-width: 260px;">
+      <p style="font-size: 11px; letter-spacing: 0.15em; text-transform: uppercase; color: var(--muted); margin-bottom: 28px;">Sector Focus</p>
+      <div style="display: flex; flex-direction: column; gap: 12px;">
+        <div style="display: flex; align-items: center; gap: 16px; padding: 18px 20px; border: 1px solid var(--rule);">
+          <div style="width: 6px; height: 6px; border-radius: 50%; background: var(--accent); flex-shrink: 0;"></div>
+          <span style="font-size: 15px; font-weight: 300;">Beauty &amp; Personal Care</span>
+        </div>
+        <div style="display: flex; align-items: center; gap: 16px; padding: 18px 20px; border: 1px solid var(--rule);">
+          <div style="width: 6px; height: 6px; border-radius: 50%; background: var(--accent); flex-shrink: 0;"></div>
+          <span style="font-size: 15px; font-weight: 300;">Nutrition &amp; Wellness</span>
+        </div>
+        <div style="display: flex; align-items: center; gap: 16px; padding: 18px 20px; border: 1px solid var(--rule);">
+          <div style="width: 6px; height: 6px; border-radius: 50%; background: var(--accent); flex-shrink: 0;"></div>
+          <span style="font-size: 15px; font-weight: 300;">Packaged Foods</span>
+        </div>
+        <div style="display: flex; align-items: center; gap: 16px; padding: 18px 20px; border: 1px solid var(--rule);">
+          <div style="width: 6px; height: 6px; border-radius: 50%; background: var(--accent); flex-shrink: 0;"></div>
+          <span style="font-size: 15px; font-weight: 300;">Home &amp; Lifestyle Brands</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- divider -->
+<div style="max-width: 960px; margin: 0 auto; padding: 0 60px;">
+  <div style="height: 1px; background: var(--rule);"></div>
+</div>
+
+<!-- ─── WHY ARTHAMERGE ─────────────────────────────────────────── -->
+<section style="padding: 120px 60px; max-width: 960px; margin: 0 auto;">
+  <div class="reveal" style="display: flex; gap: 80px; align-items: flex-start; flex-wrap: wrap; margin-bottom: 64px;">
+    <div style="flex: 0 0 200px;">
+      <div style="width: 32px; height: 1px; background: var(--accent); margin-bottom: 12px;"></div>
+      <p style="font-size: 11px; letter-spacing: 0.15em; text-transform: uppercase; color: var(--muted);">Differentiation</p>
+    </div>
+    <div style="flex: 1; min-width: 280px;">
+      <h2 style="font-family: var(--serif); font-size: clamp(32px, 4vw, 48px); font-weight: 300; line-height: 1.2;">Why ArthaMerge</h2>
+    </div>
+  </div>
+
+  <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 48px 64px;">
+    <div class="reveal d1">
+      <div style="width: 24px; height: 1px; background: var(--accent); margin-bottom: 20px;"></div>
+      <h3 style="font-family: var(--serif); font-size: 18px; font-weight: 400; margin-bottom: 10px; line-height: 1.3;">Exclusive Focus</h3>
+      <p style="font-size: 14px; color: var(--muted); line-height: 1.8;">We advise only on transition-stage exits — no fundraising, no buy-side. This singular focus translates into depth of execution.</p>
+    </div>
+    <div class="reveal d2">
+      <div style="width: 24px; height: 1px; background: var(--accent); margin-bottom: 20px;"></div>
+      <h3 style="font-family: var(--serif); font-size: 18px; font-weight: 400; margin-bottom: 10px; line-height: 1.3;">D2C Specialisation</h3>
+      <p style="font-size: 14px; color: var(--muted); line-height: 1.8;">Deep category knowledge across India's branded consumer landscape — we understand what drives value in these businesses.</p>
+    </div>
+    <div class="reveal d3">
+      <div style="width: 24px; height: 1px; background: var(--accent); margin-bottom: 20px;"></div>
+      <h3 style="font-family: var(--serif); font-size: 18px; font-weight: 400; margin-bottom: 10px; line-height: 1.3;">Secondary Liquidity Expertise</h3>
+      <p style="font-size: 14px; color: var(--muted); line-height: 1.8;">Structured liquidity solutions for early investors — a rarely specialised capability that creates optionality at every stage.</p>
+    </div>
+    <div class="reveal d4">
+      <div style="width: 24px; height: 1px; background: var(--accent); margin-bottom: 20px;"></div>
+      <h3 style="font-family: var(--serif); font-size: 18px; font-weight: 400; margin-bottom: 10px; line-height: 1.3;">Disciplined Execution</h3>
+      <p style="font-size: 14px; color: var(--muted); line-height: 1.8;">Process-driven transaction management that protects timelines, controls information flow, and maximises competitive tension.</p>
+    </div>
+    <div class="reveal d5">
+      <div style="width: 24px; height: 1px; background: var(--accent); margin-bottom: 20px;"></div>
+      <h3 style="font-family: var(--serif); font-size: 18px; font-weight: 400; margin-bottom: 10px; line-height: 1.3;">Selective Mandates</h3>
+      <p style="font-size: 14px; color: var(--muted); line-height: 1.8;">We take on fewer engagements by design — so that every client receives senior attention from first meeting to final signature.</p>
+    </div>
+    <div class="reveal d1">
+      <div style="width: 24px; height: 1px; background: var(--accent); margin-bottom: 20px;"></div>
+      <h3 style="font-family: var(--serif); font-size: 18px; font-weight: 400; margin-bottom: 10px; line-height: 1.3;">Founder-First Mindset</h3>
+      <p style="font-size: 14px; color: var(--muted); line-height: 1.8;">We've worked with those who built these businesses from zero. We understand the complexity — financial and emotional — of letting go on the right terms.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ─── CONTACT ─────────────────────────────────────────── -->
+<section id="contact" style="background: var(--ink); padding: 120px 60px;">
+  <div style="max-width: 960px; margin: 0 auto; display: flex; gap: 80px; align-items: flex-start; flex-wrap: wrap;">
+    <div class="reveal" style="flex: 1; min-width: 300px;">
+      <p style="font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--accent); margin-bottom: 28px;">Get in Touch</p>
+      <h2 style="font-family: var(--serif); font-size: clamp(36px, 5vw, 60px); font-weight: 300; line-height: 1.15; color: var(--bg);">
+        At the right<br /><em style="font-style: italic; color: var(--accent);">inflection point?</em>
+      </h2>
+      <p style="font-size: 15px; color: oklch(72% 0.008 60); margin-top: 28px; line-height: 1.8; max-width: 380px;">
+        We partner with founders and investors at the moments that matter most — when the decision to transition demands precision, discretion, and the right counsel.
+      </p>
+    </div>
+    <div class="reveal d2" style="flex: 0 0 280px; min-width: 240px;">
+      <div style="display: flex; flex-direction: column; gap: 0; margin-top: 60px;">
+        <div style="padding: 24px 0; border-top: 1px solid oklch(28% 0.008 60);">
+          <p style="font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: oklch(50% 0.008 60); margin-bottom: 8px;">Phone</p>
+          <a href="tel:+919667395420" style="font-family: var(--serif); font-size: 20px; font-weight: 300; color: var(--bg); letter-spacing: 0.01em;">+91 96673 95420</a>
+        </div>
+        <div style="padding: 24px 0; border-top: 1px solid oklch(28% 0.008 60); border-bottom: 1px solid oklch(28% 0.008 60);">
+          <p style="font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: oklch(50% 0.008 60); margin-bottom: 8px;">Email</p>
+          <a href="mailto:arthamerge@gmail.com" style="font-family: var(--serif); font-size: 18px; font-weight: 300; color: var(--bg);">arthamerge@gmail.com</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── FOOTER ─────────────────────────────────────────── -->
+<footer style="background: var(--ink); padding: 32px 60px; border-top: 1px solid oklch(22% 0.008 60);">
+  <div style="max-width: 960px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 16px;">
+    <p style="font-size: 12px; color: oklch(40% 0.008 60); letter-spacing: 0.04em;">© 2025 ArthaMerge. All rights reserved.</p>
+    <p style="font-size: 12px; color: oklch(40% 0.008 60); letter-spacing: 0.04em; font-style: italic; font-family: var(--serif);">Where Value Meets Opportunity</p>
+  </div>
+</footer>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  componentDidMount() {
+    const els = document.querySelectorAll('.reveal');
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          e.target.classList.add('visible');
+          io.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.12 });
+    els.forEach(el => io.observe(el));
+  }
+  renderVals() { return {}; }
+}
+</script>
+</body>
+</html>
